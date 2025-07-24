@@ -1,29 +1,34 @@
-const addtodoButton = document.getElementById('add-todo-btn'); // بدون نقطه
-const addInput = document.getElementById('add-input'); // بدون نقطه و اصلاح نام
-const todoList = document.getElementById('todo-list'); // بدون نقطه
-// Initialize an empty array to hold todo items
+const addtodoButton = document.getElementById('add-todo-btn');
+const addInput = document.getElementById('add-input');
+const todoList = document.getElementById('todo-list');
 const todos = [];
 
 addtodoButton.addEventListener("click", (e) => {
     e.preventDefault();
-    // Get the value from the input field and trim whitespace
     const value = addInput.value.trim();
-    // Check if the input is not empty
+    // IF VALUE IS NOT EMPTY, ADD TO TODOS
+    // AND UPDATE THE LIST
     if (value !== '') {
-        // Create a new todo object
-        const todoItem = document.createElement('li');
-        todoItem.classList = 'todo-item';
-        todoItem.innerHTML = `
-            <span class="todo-text">${value}</span>
-            <button type='button' class='todo-btn' id='edit-btn'>
-                <i class="fa fa-edit"></i>
-            </button>
-            <button type='button' class='todo-btn' id='delete-btn'>
-                <i class='fa fa-trash'></i>
-            </button>
-        `;
-        // Append the new todo item to the todo list
-        todoList.appendChild(todoItem);
-        
+        todos.push(value); // افزودن ورودی جدید به آرایه todos
+        addInput.value = ''; // پاک کردن ورودی بعد از افزودن
+        todoList.innerHTML = ''; // پاک کردن لیست قبل از افزودن آیتم‌ها
+        todos.forEach((todo) => {
+            const todoItem = document.createElement('li');
+            todoItem.classList = 'todo-item';
+            todoItem.innerHTML = `
+                <span class="todo-text">${todo}</span>
+                <button type='button' class='todo-btn' id='edit-btn'>
+                    <i class="fa fa-edit"></i>
+                </button>
+                <button type='button' class='todo-btn' id='delete-btn' data-index=${todos.indexOf(todo)} onclick="deleteTodo()">
+                    <i class='fa fa-trash'></i>
+                </button>
+            `;
+            todoList.appendChild(todoItem);
+        });
+    } else {
+        alert('Please enter a todo item');
     }
 });
+// DELETE TODO FUNCTION
+function deleteTodo() { } 
