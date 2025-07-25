@@ -20,7 +20,7 @@ addtodoButton.addEventListener("click", (e) => {
                 <button type='button' class='todo-btn' id='edit-btn'>
                     <i class="fa fa-edit"></i>
                 </button>
-                <button type='button' class='todo-btn' id='delete-btn' data-index=${todos.indexOf(todo)} onclick="deleteTodo()">
+                <button type='button' class='todo-btn' id='delete-btn' data-index=${index} onclick="deleteTodo(this)">
                     <i class='fa fa-trash'></i>
                 </button>
             `;
@@ -30,5 +30,8 @@ addtodoButton.addEventListener("click", (e) => {
         alert('Please enter a todo item');
     }
 });
-// DELETE TODO FUNCTION
-function deleteTodo() { } 
+
+const deleteTodo = (btn) => { 
+    const index = btn.dataset.index;
+    
+} 
