@@ -1,6 +1,7 @@
 const addtodoButton = document.getElementById('add-todo-btn');
 const addInput = document.getElementById('add-input');
 const todoList = document.getElementById('todo-list');
+const editformWrapper = document.getElementById('edit-form-wrapper');
 const todos = [];
 
 const Displaytodos = () => {
@@ -42,7 +43,10 @@ function deleteTodo(btn) {
 // Edit todo function
 function editTodo(btn) {
     // گرفتن ایندکس آیتم مورد نظر برای ویرایش
-const index = btn.dataset.index;
+    const index = btn.dataset.index;
+    editformWrapper.classList.add('show-form') // نمایش فرم ویرایش
+    
+
 
 
 
