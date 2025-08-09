@@ -44,7 +44,8 @@ function deleteTodo(btn) {
 function editTodo(btn) {
     // گرفتن ایندکس آیتم مورد نظر برای ویرایش
     const index = btn.dataset.index;
-    editformWrapper.classList.add('show-form') // نمایش فرم ویرایش
+    // نمایش فرم ویرایش
+    editformWrapper.classList.add('show-form');
     
 
 
