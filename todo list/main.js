@@ -2,6 +2,8 @@ const addtodoButton = document.getElementById('add-todo-btn');
 const addInput = document.getElementById('add-input');
 const todoList = document.getElementById('todo-list');
 const editformWrapper = document.getElementById('edit-form-wrapper');
+const editInput = document.getElementById('edit-input');
+const editForme = document.getElementById('edit-form');
 const todos = [];
 
 const Displaytodos = () => {
@@ -44,8 +46,26 @@ function deleteTodo(btn) {
 function editTodo(btn) {
     // گرفتن ایندکس آیتم مورد نظر برای ویرایش
     const index = btn.dataset.index;
+    
+
     // نمایش فرم ویرایش
     editformWrapper.classList.add('show-form');
+    editInput.value = todos[index];
+    editInput.dataset.index = index; // ذخیره ایندکس در دیتاست ورودی
+    editInput.focus(); 
+    // افزودن رویداد برای ارسال فرم ویرایش
+    editForme.addEventListener('submit', (e) => {
+        e.preventDefault();
+      // به‌روزرسانی نمایش لیست TODOs
+        editformWrapper.classList.remove('show-form');
+        const editingIndex = editInput.dataset.index; // گرفتن ایندکس آیتم مورد نظر برای ویرایش= 
+        todos[editingIndex] = editInput.value.trim(); // به‌روزرسانی آیتم در آرایه todos
+        editInput.value = ''; // پاک کردن ورودی بعد از ویرایش
+        Displaytodos();
+
+    });
+
+
     
 
 
