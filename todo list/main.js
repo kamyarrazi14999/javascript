@@ -24,8 +24,15 @@ const Displaytodos = () => {
             </button>
         `;
         todoList.appendChild(todoItem); // Add item to the list
+        
     });
+    // Check if there are no todos and display an alert message
+    if (todos.length === 0) {
+        aLerttext.classList.add('show-alert-text');
+        aLerttext.textContent = '😯 Empty list. Add a new todo to get started!';
+    };
 };
+Displaytodos(); // Initial call to display todos
 
 // Event listener for adding a new todo
 addtodoButton.addEventListener("click", (e) => {
@@ -40,6 +47,10 @@ addtodoButton.addEventListener("click", (e) => {
         // Show alert if input is empty
         aLerttext.classList.add('show-alert-text');
         aLerttext.textContent = '😯 Please enter a todo item';
+        aLerttext.classList.add('alert-animation');
+      aLerttext.addEventListener('animationend', () => {
+            aLerttext.classList.remove('show-alert-text', 'alert-animation'); // Remove alert after animation
+        });
      
     }   
     
