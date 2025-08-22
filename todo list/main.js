@@ -7,6 +7,10 @@ const editInput = document.getElementById('edit-input');
 const editForme = document.getElementById('edit-form');
 const aLerttext = document.querySelector('.alert-text');
 const todos = []; // Array to store todo items
+// save and load todos from local storage
+const saveTodosToLocalStorage = () => {
+    localStorage.setItem('todos', JSON.stringify(todos));
+};
 
 // Function to display all todos in the list
 const Displaytodos = () => {
@@ -81,7 +85,8 @@ function editTodo(btn) {
         e.preventDefault(); // Prevent default form submission
         // Check if input is not empty
         if (editInput.value === '') {
-            alert('Please enter a valid todo item');
+            aLerttext.classList.add('show-alert-text');
+            aLerttext.textContent = '😯 Please enter a todo item';
             return;
         }
         editformWrapper.classList.remove('show-form'); // Hide edit form
