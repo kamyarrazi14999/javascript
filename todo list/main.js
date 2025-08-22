@@ -41,14 +41,16 @@ addtodoButton.addEventListener("click", (e) => {
     const value = addInput.value.trim();
     if (value !== '') {
         todos.push(value); // Add new todo to the array
-        addInput.value = ''; // Clear input after adding
         Displaytodos(); // Update the displayed list
+        addInput.value = ''; // Clear input after adding
+        aLerttext.classList.remove('show-alert-text'); // Remove alert if present
     } else {
         // Show alert if input is empty
         aLerttext.classList.add('show-alert-text');
         aLerttext.textContent = '😯 Please enter a todo item';
         aLerttext.classList.add('alert-animation');
-      aLerttext.addEventListener('animationend', () => {
+        aLerttext.addEventListener('animationend', () => {
+        // if animation ends, remove alert classes  
             aLerttext.classList.remove('show-alert-text', 'alert-animation'); // Remove alert after animation
         });
      
