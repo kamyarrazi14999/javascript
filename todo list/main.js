@@ -6,10 +6,17 @@ const editformWrapper = document.getElementById('edit-form-wrapper');
 const editInput = document.getElementById('edit-input');
 const editForme = document.getElementById('edit-form');
 const aLerttext = document.querySelector('.alert-text');
-const todos = []; // Array to store todo items
+let todos;
+
+if(localStorage.getItem('todos')) {
+    todos = localStorage.getItem('todos').split(','); // Load todos from local storage
+} else {
+    todos = [];
+}
+ // Array to store todo items
 // save and load todos from local storage
 const saveTodosToLocalStorage = () => {
-    localStorage.setItem('todos', JSON.stringify(todos));
+    localStorage.setItem('todos',todos);
 };
 
 // Function to display all todos in the list
@@ -45,6 +52,7 @@ addtodoButton.addEventListener("click", (e) => {
     const value = addInput.value.trim();
     if (value !== '') {
         todos.push(value); // Add new todo to the array
+        saveTodosToLocalStorage(); // Save updated todos to local storage
         Displaytodos(); // Update the displayed list
         addInput.value = ''; // Clear input after adding
         aLerttext.classList.remove('show-alert-text'); // Remove alert if present
