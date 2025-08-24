@@ -7,13 +7,13 @@ const editInput = document.getElementById('edit-input');
 const editForme = document.getElementById('edit-form');
 const aLerttext = document.querySelector('.alert-text');
 let todos;
-
+// Initialize todos array from local storage or as an empty array
 if(localStorage.getItem('todos')) {
-    todos = localStorage.getItem('todos').split(','); // Load todos from local storage
+    todos = JSON.parse(localStorage.getItem('todos')); // Load todos from local storage
 } else {
     todos = [];
 }
- // Array to store todo items
+
 // save and load todos from local storage
 const saveTodosToLocalStorage = () => {
     localStorage.setItem('todos',todos);
