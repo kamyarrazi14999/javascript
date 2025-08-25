@@ -16,7 +16,7 @@ if(localStorage.getItem('todos')) {
 
 // save and load todos from local storage
 const saveTodosToLocalStorage = () => {
-    localStorage.setItem('todos',todos);
+    localStorage.setItem('todos',JSON.stringify(todos)); // Save todos array to local storage
 };
 
 // Function to display all todos in the list
