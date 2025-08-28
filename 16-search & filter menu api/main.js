@@ -1,6 +1,11 @@
+const menuItemlist = document.querySelector(".menu");
+
+
+
+// store menu items api data
 let menuItems = null;
 
-// Load menu items from API
+// function to fetch menu items from the API
 const fetchMenuItems = async () => {
   // Make API request
   const response = await axios.get(
@@ -12,9 +17,20 @@ const fetchMenuItems = async () => {
     displayMenuItems(menuItems);
 };
 
-// Display menu items in the DOM
+//function to show items on the page
 const displayMenuItems = (items) => {
-
-}
+    
+    items.map(item => {
+        const menulteme = `
+        <div class="menu-item">
+            <img src="${item.strMealThumb}" alt="${item.strMeal}" class="menu-img">
+            <h3>${item.strMeal}</h3>
+        </div>
+        
+        `
+        menuItemlist.innerHTML += menulteme;
+    
+    })
+};
 
 fetchMenuItems();
