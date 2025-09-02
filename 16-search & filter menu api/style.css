@@ -120,6 +120,12 @@ input {
   margin-top: 1rem;
   font-size: 1.6rem;
 }
+.loading-text{
+  width: 250px;
+  display: block;
+  margin: 2rem auto;
+  animation: spin 2s linear infinite;
+}
 
 /* FOOTER */
 footer {
