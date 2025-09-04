@@ -48,7 +48,8 @@ function searchItemByName(e) {
   const searchedText = searchInput.value.toLowerCase().trim();
   // filter the menuItems array to find items whose names include the searched text.
   const filteredItems = menuItems.filter(item => {
-  const matchedItems = item.strMeal.toLowerCase();
+    const matchedItems = item.strMeal.toLowerCase().includes(searchedText);
+    return matchedItems;
 
   });
 }
