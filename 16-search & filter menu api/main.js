@@ -1,7 +1,8 @@
 const menuItemlist = document.querySelector(".menu");
 const loadingText = document.querySelector(".loading-text");
-
-
+const searchInput = document.getElementById("search-input");
+// events
+ searchInput.addEventListener('input',searchItemByName);
 
 // store menu items api data
 let menuItems = null;
@@ -18,6 +19,7 @@ const fetchMenuItems = async () => {
   // meals array is stored in the data.meals property of the response object.  We store this data in the menuItems variable.  We then use this data to display the menu items on the
   
     menuItems = data.meals;
+  
     loadingText.style.display = "none"; // hide loading text
     displayMenuItems(menuItems);
 }  catch(error){
@@ -40,5 +42,14 @@ const displayMenuItems = (items) => {
     
     })
 };
+// serch Item by name
+function searchItemByName(e) {
+// search text to lowercase and trim any leading or trailing spaces.
+  const searchedText = searchInput.value.toLowerCase().trim();
+  // filter the menuItems array to find items whose names include the searched text.
+  const filteredItems = menuItems.filter(item => {
+  const matchedItems = item.strMeal.toLowerCase();
 
+  });
+}
 fetchMenuItems();
